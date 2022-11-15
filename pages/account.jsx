@@ -3,14 +3,25 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        SmithProductions
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 const theme = createTheme();
 
@@ -51,7 +62,15 @@ const Account = (props) => {
 
     return (
         <ThemeProvider theme={theme}>
-        <Grid container style={{ minHeight: "125vh"}}>
+          <div style={{
+            backgroundImage: "url(img/background.jpg)",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            height: "100%",
+            width: "100%",
+          }}>
+        <Grid container style={{ minHeight: "100vh"}}>
           <CssBaseline />
           <div>
             <h1></h1>
@@ -72,15 +91,36 @@ const Account = (props) => {
               }
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "red" }}></Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
+            <Typography component="h2" variant="h1"
+            sx={{
+              color: "#ffffff",
+              m: 0, 
+            }}
+            >
+              OneShot
+            </Typography>
+            <Typography component="h5" variant="h5"
+            sx={{
+              color: "#ffffff",
+              fontSize: "1.2rem",
+              m:0,
+              mb: 5
+            }}
+            >
+              The Growing World of Esports
+            </Typography>
+            <Typography component="h1" variant="h5" sx={{
+              color: "#ffffff"
+            }}>
+             Sign In
             </Typography>
             <Box
               component="form"
               onSubmit={handleSubmit}
               noValidate
-              sx={{ mt: 1 }}
+              sx={{ mt: 1,
+                padding: "15px 15px",
+              }}
             >
               <TextField
                 ref={ref}
@@ -94,6 +134,13 @@ const Account = (props) => {
                 value={formState.email}
                 autoComplete="email"
                 autoFocus
+                sx={{
+                  backgroundColor: "white",
+                  Border: 1,
+                  borderColor: "text.primary",
+                  borderRadius: "10px",
+                  color: "text.primary",
+                }}
               />
               <TextField
                 ref={ref}
@@ -107,34 +154,39 @@ const Account = (props) => {
                 onChange={handleChange}
                 value={formState.password}
                 autoComplete="current-password"
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+                sx={{
+                  backgroundColor: "white",
+                  Border: 1,
+                  borderColor: "text.primary",
+                  borderRadius: "10px",
+                  color: "text.primary",
+                }}
               />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2, borderRadius: "10px" }}
               >
                 Sign In
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  <Link href="#" variant="body2" color="#000000">
                     Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}
+                  <Link href="#" variant="body2" color="#000000">
+                    Don't have an account? {"Sign Up"}
                   </Link>
                 </Grid>
               </Grid>
             </Box>
+            <Copyright sx={{ mt: 8, mb: 4, color: "#ffffff", position: "absolute", bottom: 3 }} />
           </Box>
         </Grid>
+        </div>
       </ThemeProvider>
     );
 }
